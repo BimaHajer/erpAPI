@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -12,9 +13,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       username: 'postgres',
       password: 'postgres',
       database:"curioERP",
-      entities: [],
+      autoLoadEntities:true,
       synchronize: true, // À utiliser uniquement en développement
     }),
+    UserModule,
   ],
   controllers: [AppController],
   providers: [AppService],
